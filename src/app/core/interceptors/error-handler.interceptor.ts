@@ -3,16 +3,28 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor() { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        // if (error.status === 401) {
+        //   // auto logout if 401 response returned from api
+        //   this.authenticationService.logout();
+        //   location.reload(true);
+        // }
+        console.error("Error from ErrorHandlerInterceptor", error);
+        return throwError(error);
+      })
+    );
   }
 }
