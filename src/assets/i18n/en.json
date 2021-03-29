@@ -1,0 +1,17 @@
+{
+    "header": {
+        "lang": {
+            "en": "English",
+            "si": "සිංහල"
+        },
+        "nav": {
+            "home": "Home",
+            "about": "About",
+            "profile": "Profile"
+        },
+        "btn": {
+            "join": "Join",
+            "singIp": "Sign In"
+        }
+    }
+}

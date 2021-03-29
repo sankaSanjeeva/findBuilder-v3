@@ -2,28 +2,28 @@
     <div class="header__logo">
         <span class="logo">findBuilder</span>
         <span class="lang">
-            <select>
-                <option value="">සිංහල</option>
-                <option value="">English</option>
+            <select [(ngModel)]="defaultLang" (change)="onLanguageChange($event.target.value)">
+                <option value="en">{{ 'header.lang.en' | transloco }}</option>
+                <option value="si">{{ 'header.lang.si' | transloco }}</option>
             </select>
         </span>
     </div>
     <nav class="header__nav">
         <ul class="nav-list">
             <li>
-                <a [routerLink]="['/home']" routerLinkActive="active" (click)="isSideMenuOpen = false"  class="nav-link">Home</a>
+                <a [routerLink]="['/home']" routerLinkActive="active" (click)="isSideMenuOpen = false"  class="nav-link">{{ 'header.nav.home' | transloco }}</a>
             </li>
             <li>
-                <a [routerLink]="['/about']" routerLinkActive="active" (click)="isSideMenuOpen = false" class="nav-link">About</a>
+                <a [routerLink]="['/about']" routerLinkActive="active" (click)="isSideMenuOpen = false" class="nav-link">{{ 'header.nav.about' | transloco }}</a>
             </li>
             <li>
-                <a [routerLink]="['/profile']" routerLinkActive="active" (click)="isSideMenuOpen = false" class="nav-link">Contact</a>
+                <a [routerLink]="['/profile']" routerLinkActive="active" (click)="isSideMenuOpen = false" class="nav-link">{{ 'header.nav.profile' | transloco }}</a>
             </li>
         </ul>
     </nav>
     <div class="header__btn">
-        <button class="btn btn--join" [routerLink]="['/register']" (click)="isSideMenuOpen = false">Join</button>
-        <button class="btn btn--sign-up" [routerLink]="['/login']" (click)="isSideMenuOpen = false">Sing Up</button>
+        <button class="btn btn--join" [routerLink]="['/register']" (click)="isSideMenuOpen = false">{{ 'header.btn.join' | transloco }}</button>
+        <button class="btn btn--sign-up" [routerLink]="['/login']" (click)="isSideMenuOpen = false">{{ 'header.btn.singIp' | transloco }}</button>
     </div>
     <div class="expand-menu" (click)="expandMenu();">
         <i class="icon icon-carpenter"></i>
