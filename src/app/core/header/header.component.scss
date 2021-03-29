@@ -1,0 +1,287 @@
+@import '../../../assets/scss/partials/responsive';
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 5%;
+    width: 90%;
+    z-index: 1000;
+    transition: background-color .5s ease, height .5s ease;
+
+    &::after{
+        content: "";
+        width: 90%;
+        height: 2px;
+        background-color: rgb(104, 104, 104);
+        position: absolute;
+        bottom: 0;
+        transition: background-color .5s ease;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+
+        .logo {
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .lang {
+            select {
+                color: #fff;
+                outline: none;
+                border: none;
+                background: none;
+                cursor: pointer;
+
+                option {
+                    color: rgb(104, 104, 104);
+                }
+            }
+        }
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;       
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+
+            .nav-link {
+                margin: 0 30px;
+                text-decoration: none;
+                color: #fff;
+                position: relative;
+
+                &::after{
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background-color: #fff;
+                    position: absolute;
+                    left: 0;
+                    bottom: -4px;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: transform .5s ease;
+                }
+
+                &:hover::after{
+                    transform: scaleX(1);
+                }
+            }
+
+            .active {
+                &::after{
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+
+    &__btn {
+        display: flex;
+
+        .btn {
+            cursor: pointer;
+            height: 40px;
+            width: 120px;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+            padding: 0;
+            transition: background-color .5s ease, color .5s ease;
+
+            &--join {
+                color: #fff;
+                background: none;
+                margin-right: 10px;
+
+                &:hover {
+                    color: rgb(104, 104, 104);
+                    background: #fff;
+                }
+            }
+
+            &--sign-up {
+                background: #fff;
+                color: rgb(104, 104, 104);
+
+                &:hover {
+                    background: none;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.scroll-active {
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0 3px 1rem rgb(0 0 0 / 10%);
+
+    &::after{
+        background-color: #fff;
+    }
+
+    .logo {
+        color: rgb(104, 104, 104);
+    }
+
+    .lang {
+        select {
+            color: rgb(104, 104, 104);
+        }
+    }
+
+    .nav-link {
+        color: rgb(104, 104, 104) !important;
+
+        &::after{
+            background-color: rgb(109, 109, 109) !important;
+        }
+    }
+
+    .btn {
+        &--join {
+            color: rgb(109, 109, 109);
+
+            &:hover {
+                background: rgb(109, 109, 109);
+                color: #fff;
+            }
+        }
+
+        &--sign-up {
+            background: rgb(109, 109, 109);
+            color: #fff;
+            
+            &:hover {
+                background: #fff;
+                color: rgb(109, 109, 109);
+            }
+        }
+    }
+}
+
+.expand-menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: none;
+    font-size: 60px;
+    cursor: pointer;
+}
+
+@include screen(lg) {
+    .header {
+        padding: 0 2%;
+        width: 96%;
+
+        &__logo {
+            .logo {
+                font-size: 25px;
+            }
+        }
+    
+        &__nav {
+            .nav-list {    
+                .nav-link {
+                    margin: 0 25px;
+                }
+            }
+        }
+    
+        &__btn {
+            .btn {
+                cursor: pointer;
+                width: 100px;
+            }
+        }
+    }    
+}
+
+@include screen(md) {
+    .header {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100vh !important;
+        background-color: #fff !important;
+        clip-path: circle(100px at 100% 0%);
+        -webkit-clip-path: circle(100px at 100% 0%);
+        transition: clip-path 1s ease-out, -webkit-clip-path 1s ease-out;
+
+        &::after{
+            background-color: #fff;
+        }
+
+        .logo {
+            color: rgb(104, 104, 104);
+        }
+
+        .lang {
+            select {
+                color: rgb(104, 104, 104);
+            }
+        }
+
+        .nav-list {
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 50vh;
+
+            .nav-link {
+                color: rgb(104, 104, 104) !important;
+    
+                &::after{
+                    background-color: rgb(109, 109, 109) !important;
+                }
+            }
+        }
+
+        .btn {
+            &--join {
+                color: rgb(109, 109, 109);
+
+                &:hover {
+                    background: rgb(109, 109, 109);
+                    color: #fff;
+                }
+            }
+
+            &--sign-up {
+                background: rgb(109, 109, 109);
+                color: #fff;
+                
+                &:hover {
+                    background: #fff;
+                    color: rgb(109, 109, 109);
+                }
+            }
+        }
+    }
+
+    .expand-menu {
+        display: block;
+    }
+
+    .menu-open {
+        clip-path: circle(1000px at 100% 0%);
+        -webkit-clip-path: circle(1000px at 100% 0%);
+    }
+}

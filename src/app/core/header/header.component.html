@@ -1,0 +1,31 @@
+<header class="header" [ngClass]="{'scroll-active': !isTop, 'menu-open': isSideMenuOpen}">
+    <div class="header__logo">
+        <span class="logo">findBuilder</span>
+        <span class="lang">
+            <select>
+                <option value="">සිංහල</option>
+                <option value="">English</option>
+            </select>
+        </span>
+    </div>
+    <nav class="header__nav">
+        <ul class="nav-list">
+            <li>
+                <a [routerLink]="['/home']" routerLinkActive="active" (click)="isSideMenuOpen = false"  class="nav-link">Home</a>
+            </li>
+            <li>
+                <a [routerLink]="['/about']" routerLinkActive="active" (click)="isSideMenuOpen = false" class="nav-link">About</a>
+            </li>
+            <li>
+                <a [routerLink]="['/profile']" routerLinkActive="active" (click)="isSideMenuOpen = false" class="nav-link">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="header__btn">
+        <button class="btn btn--join" [routerLink]="['/register']" (click)="isSideMenuOpen = false">Join</button>
+        <button class="btn btn--sign-up" [routerLink]="['/login']" (click)="isSideMenuOpen = false">Sing Up</button>
+    </div>
+    <div class="expand-menu" (click)="expandMenu();">
+        <i class="icon icon-carpenter"></i>
+    </div>
+</header>
