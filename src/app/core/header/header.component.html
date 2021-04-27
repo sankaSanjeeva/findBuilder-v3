@@ -1,6 +1,6 @@
 <header class="header" [ngClass]="{'scroll-active': !isTop, 'menu-open': isSideMenuOpen}">
     <div class="header__logo">
-        <span class="logo">findBuilder</span>
+        <span class="logo"><span>find</span>Builder</span>
         <span class="lang">
             <select [(ngModel)]="defaultLang" (change)="onLanguageChange($event.target.value)">
                 <option value="en">{{ 'header.lang.en' | transloco }}</option>
@@ -25,7 +25,9 @@
         <button class="btn btn--join" [routerLink]="['/register']" (click)="isSideMenuOpen = false">{{ 'header.btn.join' | transloco }}</button>
         <button class="btn btn--sign-up" [routerLink]="['/login']" (click)="isSideMenuOpen = false">{{ 'header.btn.singIp' | transloco }}</button>
     </div>
-    <div class="expand-menu" (click)="expandMenu();">
-        <i class="icon icon-carpenter"></i>
+    <div class="hamburger" [ngClass]="{'open': isSideMenuOpen}" (click)="expandMenu();">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 </header>

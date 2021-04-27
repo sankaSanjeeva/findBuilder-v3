@@ -1,1 +1,19 @@
-<p>home works!</p>
+<section class="hero">
+    <div class="hero__title">
+        <span>{{ 'home.main.title1' | transloco }}</span>
+        <span>{{ 'home.main.title2' | transloco }}</span>
+        <span>{{ 'home.main.title3' | transloco }}</span>
+    </div>
+    <div class="hero__move" (click)="moveTo(category)">
+        <span class="arrow"></span>
+        <span class="text">{{ 'home.find' | transloco }}</span>
+    </div>
+</section>
+<section #category class="category">
+    <div class="category__content">
+        <div class="card" *ngFor="let item of categories">
+            <div class="card__icon"><i [class]="'icon-' + item.name"></i></div>
+            <div class="card__label">{{'home.category.' + item.name | transloco }}</div>
+        </div>
+    </div>
+</section>

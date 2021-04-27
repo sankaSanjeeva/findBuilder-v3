@@ -1,4 +1,5 @@
 @import '../../../assets/scss/partials/responsive';
+@import '../../../assets/scss/partials/theme';
 
 .header {
     position: fixed;
@@ -10,6 +11,7 @@
     height: 100px;
     padding: 0 5%;
     width: 90%;
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1000;
     transition: background-color .5s ease, height .5s ease;
 
@@ -17,7 +19,7 @@
         content: "";
         width: 90%;
         height: 2px;
-        background-color: rgb(104, 104, 104);
+        background-color: $base-gray;
         position: absolute;
         bottom: 0;
         transition: background-color .5s ease;
@@ -28,22 +30,26 @@
         align-items: center;
 
         .logo {
-            color: #fff;
+            color: $base-white;
             font-size: 30px;
             font-weight: bold;
             margin-right: 10px;
+
+            span {
+                color: $base-green;
+            }
         }
 
         .lang {
             select {
-                color: #fff;
+                color: $base-white;
                 outline: none;
                 border: none;
                 background: none;
                 cursor: pointer;
 
                 option {
-                    color: rgb(104, 104, 104);
+                    color: $base-gray;
                 }
             }
         }
@@ -63,14 +69,14 @@
             .nav-link {
                 margin: 0 30px;
                 text-decoration: none;
-                color: #fff;
+                color: $base-white;
                 position: relative;
 
                 &::after{
                     content: '';
                     width: 100%;
                     height: 2px;
-                    background-color: #fff;
+                    background-color: $base-green;
                     position: absolute;
                     left: 0;
                     bottom: -4px;
@@ -103,88 +109,130 @@
             outline: none;
             border: none;
             padding: 0;
+            border: 1px solid $base-green;
             transition: background-color .5s ease, color .5s ease;
 
             &--join {
-                color: #fff;
+                color: $base-white;
                 background: none;
                 margin-right: 10px;
 
                 &:hover {
-                    color: rgb(104, 104, 104);
-                    background: #fff;
+                    background: $base-green;
                 }
             }
 
             &--sign-up {
-                background: #fff;
-                color: rgb(104, 104, 104);
+                background: $base-green;
+                color: $base-white;
 
                 &:hover {
                     background: none;
-                    color: #fff;
+                    color: $base-white;
                 }
             }
         }
     }
+
+    .hamburger {
+        display: none;
+        width: 40px;
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        cursor: pointer;
+        
+        &:hover {
+            span {
+                background-color: rgb(66, 66, 66);
+            }
+        }
+    
+        span {
+            background-color: $base-gray;
+            height: 5px;
+            border-radius: 5px;
+            margin: 3px 0;
+            transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+            &:nth-child(1) {
+                width: 50%;
+            }
+
+            &:nth-child(2) {
+                width: 100%;
+            }
+
+            &:nth-child(3) {
+                width: 75%;
+            }
+        }
+    }
+    
+    .open {
+        span {
+            &:nth-child(1) {
+                transform-origin: left;
+                transform: rotatez(45deg) translate(2px, -6px);
+            }
+
+            &:nth-child(2) {
+                transform-origin: center;
+                transform: rotatez(-45deg)
+            }
+
+            &:nth-child(3) {
+                width: 50%;
+                transform-origin: right;
+                transform: translate(14px, 3px) rotatez(45deg);
+            }
+        }
+    }    
 }
 
 .scroll-active {
     height: 50px;
-    background-color: #fff;
+    background-color: $base-white;
     box-shadow: 0 3px 1rem rgb(0 0 0 / 10%);
 
     &::after{
-        background-color: #fff;
+        background-color: $base-white;
     }
 
     .logo {
-        color: rgb(104, 104, 104);
+        color: $base-gray;
     }
 
     .lang {
         select {
-            color: rgb(104, 104, 104);
+            color: $base-gray;
         }
     }
 
     .nav-link {
-        color: rgb(104, 104, 104) !important;
-
-        &::after{
-            background-color: rgb(109, 109, 109) !important;
-        }
+        color: $base-gray !important;
     }
 
     .btn {
         &--join {
-            color: rgb(109, 109, 109);
+            color: $base-gray;
 
             &:hover {
-                background: rgb(109, 109, 109);
-                color: #fff;
+                background: $base-green;
+                color: $base-white;
             }
         }
 
         &--sign-up {
-            background: rgb(109, 109, 109);
-            color: #fff;
+            background: $base-green;
+            color: $base-white;
             
             &:hover {
-                background: #fff;
-                color: rgb(109, 109, 109);
+                background: $base-white;
+                color: $base-gray;
             }
         }
     }
-}
-
-.expand-menu {
-    position: fixed;
-    right: 0;
-    top: 0;
-    display: none;
-    font-size: 60px;
-    cursor: pointer;
 }
 
 @include screen(lg) {
@@ -220,22 +268,22 @@
         flex-direction: column;
         justify-content: space-around;
         height: 100vh !important;
-        background-color: #fff !important;
-        clip-path: circle(100px at 100% 0%);
-        -webkit-clip-path: circle(100px at 100% 0%);
+        background-color: $base-white !important;
+        clip-path: circle(64px at 0 0);
+        -webkit-clip-path: circle(64px at 0 0);
         transition: clip-path 1s ease-out, -webkit-clip-path 1s ease-out;
 
         &::after{
-            background-color: #fff;
+            background-color: $base-white;
         }
 
         .logo {
-            color: rgb(104, 104, 104);
+            color: $base-gray;
         }
 
         .lang {
             select {
-                color: rgb(104, 104, 104);
+                color: $base-gray;
             }
         }
 
@@ -246,42 +294,44 @@
             height: 50vh;
 
             .nav-link {
-                color: rgb(104, 104, 104) !important;
-    
-                &::after{
-                    background-color: rgb(109, 109, 109) !important;
-                }
+                color: $base-gray !important;
             }
         }
 
         .btn {
             &--join {
-                color: rgb(109, 109, 109);
+                color: $base-gray;
 
                 &:hover {
-                    background: rgb(109, 109, 109);
-                    color: #fff;
+                    color: $base-white;
                 }
             }
 
             &--sign-up {
-                background: rgb(109, 109, 109);
-                color: #fff;
+                background: $base-green;
+                color: $base-white;
                 
                 &:hover {
-                    background: #fff;
-                    color: rgb(109, 109, 109);
+                    color: $base-gray;
                 }
             }
         }
-    }
 
-    .expand-menu {
-        display: block;
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .menu-open {
-        clip-path: circle(1000px at 100% 0%);
-        -webkit-clip-path: circle(1000px at 100% 0%);
+        clip-path: circle(1280px at 0 0);
+        -webkit-clip-path: circle(1280px at 0 0);
+    }
+}
+
+@include screen(sm) {
+    .menu-open {
+        clip-path: circle(1000px at 0 0);
+        -webkit-clip-path: circle(1000px at 0 0);
     }
 }

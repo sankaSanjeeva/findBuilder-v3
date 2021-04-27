@@ -13,5 +13,34 @@
             "join": "Join",
             "singIp": "Sign In"
         }
+    },
+    "home": {
+        "main": {
+            "title1": "Hire someone for your jobs",
+            "title2": "Work with us",
+            "title3": "The easiest way"
+        },
+        "find": "Let's Find",
+        "category": {
+            "ac": "A/C",
+            "aluminum": "Aluminum Work",
+            "carpenter": "Carpenters",
+            "cctv": "CCTV",
+            "ceiling": "Ceiling Work",
+            "cleaner": "Cleaners",
+            "contractors": "Contractors",
+            "cushionWorkers": "Cushion Work",
+            "doserFreight": "Doser Freight",
+            "electricians": "Electricians",
+            "landscaping": "Landscaping",
+            "mesons": "Mesons",
+            "painters": "Painters",
+            "plumbers": "Plumbers",
+            "renters": "Renters",
+            "solarPanel": "Solar Panel",
+            "stoneSandSoil": "Stone Sand Soil",
+            "tilesWorkers": "Tiles Work",
+            "welders": "Welders"
+        }
     }
 }
